@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Team Colombia",
+    "cyclists": [
+      { "name": "Ciclista 1", "position": [51.505, -0.09] },
+      { "name": "Ciclista 2", "position": [51.505, -0.091] }
+    ]
+  },
+  {
+    "name": "Movistar Team",
+    "cyclists": [
+      { "name": "Ciclista 3", "position": [51.506, -0.09] },
+      { "name": "Ciclista 4", "position": [51.506, -0.091] }
+    ]
+  },
+  {
+    "name": "Team UAE",
+    "cyclists": [
+      { "name": "Ciclista 5", "position": [51.506, -0.09] },
+      { "name": "Ciclista 6", "position": [51.506, -0.091] }
+    ]
+}
+]
