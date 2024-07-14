@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from 'react';
 import TeamSelector from '../../components/Simulacion/TeamSelector';
 import MapView from '../../components/Simulacion/MapView';
@@ -62,7 +61,13 @@ const Simulacion: React.FC = () => {
     return (
         <div className="p-6">
             <h1 className="text-3xl font-bold mb-6">Simulación de Carrera de Ciclistas</h1>
-            <TeamSelector teams={teams} setSelectedCyclists={setSelectedCyclists} />
+            <TeamSelector 
+                teams={teams} 
+                tracks={tracks} 
+                selectedCyclists={selectedCyclists} 
+                setSelectedCyclists={setSelectedCyclists} 
+                setSelectedTrack={setSelectedTrack} 
+            />
             <MapView selectedTrack={selectedTrack} selectedCyclists={selectedCyclists} />
             <RaceController
                 tracks={tracks}

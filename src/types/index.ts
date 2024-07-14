@@ -1,14 +1,15 @@
+// types/ciclista.ts
 export interface Coordinate {
-    lat: number;
-    lng: number;
-  }
-  
-  export interface Track {
-    name: string;
-    coordinates: Coordinate[];
-  }
-  
-  export interface Ciclista {
+  lat: number;
+  lng: number;
+}
+
+export interface Track {
+  name: string;
+  coordinates: Coordinate[];
+}
+
+export interface Ciclista {
     idtipousuario: string;
     nombreusuario: string;
     apellidousuario: string;
@@ -30,10 +31,11 @@ export interface Coordinate {
     anosexperiencia?: string;
     gradorampa?: string;
     position: Coordinate;
-  }
-  
-  export interface Team {
-    name: string;
-    cyclists: Ciclista[];
-  }
-  
+    nombreEspecialidad: string;
+    nombreEscuadra: string;
+}
+
+export interface Team {
+  name: string;
+  cyclists: Ciclista[];
+}

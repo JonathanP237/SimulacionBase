@@ -2,22 +2,22 @@
   {
     "name": "Team Colombia",
     "cyclists": [
-      { "name": "Ciclista 1", "position": [51.505, -0.09] },
-      { "name": "Ciclista 2", "position": [51.505, -0.091] }
+      { "name": "Carlos Pérez", "position": [51.505, -0.09], "speciality":"escalador" },
+      { "name": "Raúl González", "position": [51.505, -0.091], "speciality":"contrarrelojista"}
     ]
   },
   {
     "name": "Movistar Team",
     "cyclists": [
-      { "name": "Ciclista 3", "position": [51.506, -0.09] },
-      { "name": "Ciclista 4", "position": [51.506, -0.091] }
+      { "name": "Luis Martínez", "position": [51.506, -0.09], "speciality":"escalador" },
+      { "name": "Miguel Ramírez", "position": [51.506, -0.091], "speciality":"escalador" }
     ]
   },
   {
     "name": "Team UAE",
     "cyclists": [
-      { "name": "Ciclista 5", "position": [51.506, -0.09] },
-      { "name": "Ciclista 6", "position": [51.506, -0.091] }
+      { "name": "Jorge López", "position": [51.506, -0.09], "speciality":"escalador" },
+      { "name": "Héctor Vega", "position": [51.506, -0.091], "speciality":"contrarrelojista" }
     ]
 }
 ]

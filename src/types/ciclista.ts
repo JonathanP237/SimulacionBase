@@ -1,5 +1,6 @@
 // types/ciclista.ts
 export interface Ciclista {
+    nombreEscuadra: any;
     idtipousuario: string;
     nombreusuario: string;
     apellidousuario: string;
@@ -8,4 +9,5 @@ export interface Ciclista {
     idpais: string;
     idescuadra: string;
     anosexperiencia: number | null;
+    nombreEspecialidad: string;
 }
