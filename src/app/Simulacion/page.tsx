@@ -1,11 +1,12 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import TeamSelector from '../../components/Simulacion/TeamSelector';
-import MapView from '../../components/Simulacion/MapView';
+import dynamic from 'next/dynamic';
 import RaceController from '../../components/Simulacion/RaceController';
 import { Track, Ciclista, Team } from '../../types';
 import '../../styles/estilos.css';
 
+const MapView = dynamic(() => import('../../components/Simulacion/MapView'), { ssr: false });
 const Simulacion: React.FC = () => {
     const [teams, setTeams] = useState<Team[]>([]);
     const [tracks, setTracks] = useState<Track[]>([]);
