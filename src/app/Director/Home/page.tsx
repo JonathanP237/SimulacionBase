@@ -2,7 +2,6 @@
 'use client';
 
 import { MainLayout } from "../../../layouts";
-import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import axios from 'axios'; // Importar axios para hacer la llamada a la API
@@ -22,16 +21,6 @@ interface Director {
 }
 
 export default function DirectorDetalle() {
-    const searchParams = useSearchParams();
-    let iddocumento = searchParams.get('iddocumento'); // Obtener el ID del documento de los parámetros de búsqueda
-
-    // Establecer un valor predeterminado si no se proporciona iddocumento en la URL
-    const defaultIddocumento = '10021'; // Aquí debes establecer el ID predeterminado que desees
-
-    if (!iddocumento) {
-        iddocumento = defaultIddocumento;
-    }
-
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [director, setDirector] = useState<Director | null>(null);
     const [error, setError] = useState<string | null>(null); // Definir el tipo explícitamente como string | null

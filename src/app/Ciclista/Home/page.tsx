@@ -2,7 +2,6 @@
 'use client';
 
 import { MainLayout } from "../../../layouts";
-import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import axios from 'axios'; // Importar axios para hacer la llamada a la API
 import React from "react";
@@ -30,15 +29,6 @@ interface Ciclista {
 }
 
 export default function CiclistaDetalle() {
-    const searchParams = useSearchParams();
-    let iddocumento = searchParams.get('iddocumento');
-
-    const defaultIddocumento = '10006';
-
-    if (!iddocumento) {
-        iddocumento = defaultIddocumento;
-    }
-
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [ciclista, setCiclista] = useState<Ciclista | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -56,7 +46,7 @@ export default function CiclistaDetalle() {
         };
 
         fetchCiclista();
-    }, [iddocumento]);
+    }, []);
 
     if (isLoading) {
         return <div>Cargando...</div>;

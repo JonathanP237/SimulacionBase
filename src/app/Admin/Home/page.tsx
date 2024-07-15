@@ -2,7 +2,6 @@
 'use client';
 
 import { MainLayout } from "../../../layouts";
-import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Button } from "../../../components/Button";
 import Image from 'next/image';
@@ -21,15 +20,6 @@ interface Administrador {
 }
 
 export default function AdministradorDetalle() {
-    const searchParams = useSearchParams();
-    let iddocumento = searchParams.get('iddocumento'); // Obtener el ID del documento de los parámetros de búsqueda
-
-    // Establecer un valor predeterminado si no se proporciona iddocumento en la URL
-    const defaultIddocumento = '10022'; // Aquí debes establecer el ID predeterminado que desees
-
-    if (!iddocumento) {
-        iddocumento = defaultIddocumento;
-    }
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [administrador, setAdministrador] = useState<Administrador | null>(null);

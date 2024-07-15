@@ -3,10 +3,11 @@
 
 import { MainLayout } from "../../../layouts";
 import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { Button } from "../../../components/Button";
 import Image from 'next/image';
 import axios from 'axios'; // Importar axios para hacer la llamada a la API
-import React, { Suspense, useEffect, useState } from 'react';
+import React from "react";
 import GoogleTranslate from '../../../components/GoogleTranslate';
 interface Masajista {
     iddocumento: string;
@@ -19,15 +20,6 @@ interface Masajista {
 }
 
 export default function MasajistaDetalle() {
-    const searchParams = useSearchParams();
-    let iddocumento = searchParams.get('iddocumento'); // Obtener el ID del documento de los parámetros de búsqueda
-
-    // Establecer un valor predeterminado si no se proporciona iddocumento en la URL
-    const defaultIddocumento = '10025'; // ID predeterminado para masajista
-
-    if (!iddocumento) {
-        iddocumento = defaultIddocumento;
-    }
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [masajista, setMasajista] = useState<Masajista | null>(null);
@@ -57,20 +49,18 @@ export default function MasajistaDetalle() {
         return <div>Error: {error}</div>;
     }
     return (
-        <Suspense fallback={<div>Cargando...</div>}>
         <MainLayout>
             {masajista && (
                 <div className="grid grid-cols-2 gap-10 m-4">
                     <div className="relative w-full h-full md:w-[520px] md:h-[560px] rounded-lg overflow-hidden">
-                        <Image
-                            src="https://img.freepik.com/vector-gratis/ilustracion-concepto-terapia-ventosas_114360-23977.jpg?size=626&ext=jpg"
+                        <img
+                            src={`https://img.freepik.com/vector-gratis/ilustracion-concepto-terapia-ventosas_114360-23977.jpg?size=626&ext=jpg`}
                             alt={`${masajista.nombreusuario} ${masajista.apellidousuario}`}
-                            layout="fill"
-                            objectFit="contain"
+                            style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                         />
                     </div>
                     <div className="flex flex-col items-start justify-center text-black tracking-[1px] space-y-4">
-                        <GoogleTranslate />
+                        <GoogleTranslate/>
                         <h1 className="text-[30px] font-bold text-red-600">{masajista.nombreusuario} {masajista.apellidousuario}</h1>
                         <div className="border border-red-600 p-2 rounded-lg w-full">
                             <h1>Documento: {masajista.iddocumento}</h1>
@@ -91,6 +81,5 @@ export default function MasajistaDetalle() {
                 </div>
             )}
         </MainLayout>
-        </Suspense>
     );
 }    
