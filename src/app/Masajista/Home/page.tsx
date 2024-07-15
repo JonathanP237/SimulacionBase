@@ -3,11 +3,10 @@
 
 import { MainLayout } from "../../../layouts";
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import { Button } from "../../../components/Button";
 import Image from 'next/image';
 import axios from 'axios'; // Importar axios para hacer la llamada a la API
-import React from "react";
+import React, { Suspense, useEffect, useState } from 'react';
 import GoogleTranslate from '../../../components/GoogleTranslate';
 interface Masajista {
     iddocumento: string;
@@ -58,18 +57,20 @@ export default function MasajistaDetalle() {
         return <div>Error: {error}</div>;
     }
     return (
+        <Suspense fallback={<div>Cargando...</div>}>
         <MainLayout>
             {masajista && (
                 <div className="grid grid-cols-2 gap-10 m-4">
                     <div className="relative w-full h-full md:w-[520px] md:h-[560px] rounded-lg overflow-hidden">
-                        <img
-                            src={`https://img.freepik.com/vector-gratis/ilustracion-concepto-terapia-ventosas_114360-23977.jpg?size=626&ext=jpg`}
+                        <Image
+                            src="https://img.freepik.com/vector-gratis/ilustracion-concepto-terapia-ventosas_114360-23977.jpg?size=626&ext=jpg"
                             alt={`${masajista.nombreusuario} ${masajista.apellidousuario}`}
-                            style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+                            layout="fill"
+                            objectFit="contain"
                         />
                     </div>
                     <div className="flex flex-col items-start justify-center text-black tracking-[1px] space-y-4">
-                        <GoogleTranslate/>
+                        <GoogleTranslate />
                         <h1 className="text-[30px] font-bold text-red-600">{masajista.nombreusuario} {masajista.apellidousuario}</h1>
                         <div className="border border-red-600 p-2 rounded-lg w-full">
                             <h1>Documento: {masajista.iddocumento}</h1>
@@ -90,5 +91,6 @@ export default function MasajistaDetalle() {
                 </div>
             )}
         </MainLayout>
+        </Suspense>
     );
 }    
