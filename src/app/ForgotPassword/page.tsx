@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { sendResetPasswordEmail } from '../../services/passwordService';
 import React from 'react';
-import GoogleTranslate from '@/components/GoogleTranslate';
+import GoogleTranslate from '../../components/GoogleTranslate';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState<string>('');

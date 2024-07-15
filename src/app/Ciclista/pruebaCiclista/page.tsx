@@ -3,8 +3,8 @@
 
 import { useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
-import { MainLayout } from "@/layouts";
-import { Button } from "@/components/Button";
+import { MainLayout } from "../../../layouts";
+import { Button } from "../../../components/Button";
 
 export default function BuscarCiclista() {
     const [iddocumento, setIddocumento] = useState<string>(''); // Estado para almacenar el ID del documento
