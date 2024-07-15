@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import { MainLayout } from "@/layouts";
+import { MainLayout } from "../../../layouts";
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import axios from 'axios'; // Importar axios para hacer la llamada a la API
 import React from "react";
-import GoogleTranslate from "@/components/GoogleTranslate";
+import GoogleTranslate from "../../../components/GoogleTranslate";
 
 interface Ciclista {
     idtipousuario: string;
