@@ -26,9 +26,9 @@
   {
     "name": "Pista de un solo dia",
     "coordinates": [
-      { "lat": 51.49, "lng": -0.16 },
-      { "lat": 51.485, "lng": -0.15 },
-      { "lat": 51.4, "lng": -0.15 }
+      { "lat": 51.49, "lng": -0.12 },
+      { "lat": 51.495, "lng": -0.12 },
+      { "lat": 51.5, "lng": -0.12 }
     ]
   },
   {

@@ -12,14 +12,9 @@ const RaceController = ({ tracks, setSelectedTrack, startRace }) => {
 
     return (
         <div>
-            <label htmlFor="track-select">Seleccione una pista:</label>
-            <select id="track-select" value={selectedTrackName} onChange={handleSelectTrack}>
-                <option value="">Seleccionar pista</option>
-                {tracks.map(track => (
-                    <option key={track.name} value={track.name}>{track.name}</option>
-                ))}
-            </select>
-            <button onClick={startRace}>Iniciar Carrera</button>
+            <button
+            className="border-2 border-blue-600 text-blue-600 rounded-full px-12 py-2 inline-block font-semibold hover:bg-blue-600 hover:text-white" 
+            onClick={startRace}>Iniciar Carrera</button>
         </div>
     );
 }

@@ -2,22 +2,23 @@
   {
     "name": "Team Colombia",
     "cyclists": [
-      { "name": "Carlos Pérez", "position": [51.505, -0.09], "speciality":"escalador" },
-      { "name": "Raúl González", "position": [51.505, -0.091], "speciality":"contrarrelojista"}
+      { "name": "Carlos Pérez", "position": [51.505, -0.09], "speciality":"Escaladores" },
+      { "name": "Luis Martínez", "position": [51.5, -0.08], "speciality":"Rodadores"},
+      { "name": "Jorge López", "position": [51.49, -0.12], "speciality":"Sprinters o embaladores"},
+      { "name": "Fernando García", "position": [51.505, -0.091], "speciality":"gregarios"},
+      { "name": "Diego Fernández", "position": [51.49, -0.12], "speciality":"clasicómanos"},
+      { "name": "Raúl González", "position": [51.49, -0.1], "speciality":"contrarrelojista"}
     ]
   },
   {
     "name": "Movistar Team",
     "cyclists": [
-      { "name": "Luis Martínez", "position": [51.506, -0.09], "speciality":"escalador" },
-      { "name": "Miguel Ramírez", "position": [51.506, -0.091], "speciality":"escalador" }
+      { "name": "Miguel Ramírez", "position": [51.506, -0.091], "speciality":"Escaladores" },
+      { "name": "Héctor Vega", "position": [51.5, -0.081], "speciality":"Rodadores" },
+      { "name": "Andrés Morales", "position": [51.49, -0.121], "speciality":"Sprinters o embaladores"},
+      { "name": "Javier Santana", "position": [51.505, -0.091], "speciality":"gregarios"},
+      { "name": "Hugo Alonso", "position": [51.49, -0.121], "speciality":"clasicómanos"},
+      { "name": "Mario Domínguez", "position": [51.49, -0.11], "speciality":"contrarrelojista"}
     ]
-  },
-  {
-    "name": "Team UAE",
-    "cyclists": [
-      { "name": "Jorge López", "position": [51.506, -0.09], "speciality":"escalador" },
-      { "name": "Héctor Vega", "position": [51.506, -0.091], "speciality":"contrarrelojista" }
-    ]
-}
+  }
 ]

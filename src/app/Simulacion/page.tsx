@@ -11,6 +11,7 @@ const Simulacion: React.FC = () => {
     const [tracks, setTracks] = useState<Track[]>([]);
     const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
     const [selectedCyclists, setSelectedCyclists] = useState<Ciclista[]>([]);
+    const [times, setTimes] = useState<{ [key: string]: number }>({});
 
     useEffect(() => {
         fetch('/cyclist.json')
@@ -49,6 +50,12 @@ const Simulacion: React.FC = () => {
                             ...newState[index],
                             position: trackEnd
                         };
+
+                        setTimes(prevTimes => ({
+                            ...prevTimes,
+                            [cyclist.name]: (prevTimes[cyclist.name] || 0) + delay
+                        }));
+
                         return newState;
                     });
                 }, delay);
@@ -57,6 +64,8 @@ const Simulacion: React.FC = () => {
 
         moveCyclists();
     };
+
+    const sortedTimes = Object.entries(times).sort((a, b) => a[1] - b[1]);
 
     return (
         <div className="p-6">
@@ -74,6 +83,25 @@ const Simulacion: React.FC = () => {
                 setSelectedTrack={setSelectedTrack}
                 startRace={startRace}
             />
+            <h2 className="text-2xl font-bold mt-6">Resultados de la Carrera</h2>
+            <table className="min-w-full bg-white">
+                <thead>
+                    <tr>
+                        <th className="py-2 px-4 border-b border-gray-200 text-black">Posición</th>
+                        <th className="py-2 px-4 border-b border-gray-200 text-black">Ciclista</th>
+                        <th className="py-2 px-4 border-b border-gray-200 text-black">Tiempo acumulado (sg)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {sortedTimes.map(([name, time], index) => (
+                        <tr key={name}>
+                            <td className="py-2 px-4 border-b border-gray-200 text-black">{index + 1}</td>
+                            <td className="py-2 px-4 border-b border-gray-200 text-black">{name}</td>
+                            <td className="py-2 px-4 border-b border-gray-200 text-black">{time.toFixed(2)}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }
