@@ -33,7 +33,6 @@ export interface Ciclista {
     position: Coordinate;
     nombreEspecialidad: string;
     nombreEscuadra: string;
-    name: string;
 }
 
 export interface Team {
