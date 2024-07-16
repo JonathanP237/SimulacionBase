@@ -10,7 +10,7 @@ export interface LoginRequest {
 
 export async function login(request: LoginRequest): Promise<LoginResponse> {
   try {
-    const response: AxiosResponse<LoginResponse> = await axios.post("https://isuci-back.onrender.com/login", request);
+    const response: AxiosResponse<LoginResponse> = await axios.post("https://isucibackv2-4wur.onrender.com/auth/login", request);
 
     if (response.status === 200) {
       return response.data;
