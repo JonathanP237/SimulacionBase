@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { Sidebar } from "@/components/sideBar/sideBar";
+import { Sidebar } from "../components/sideBar/sideBar";
 
 interface MainLayoutProps {
   paddingTop?: string;
