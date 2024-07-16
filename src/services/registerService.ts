@@ -19,7 +19,7 @@ export interface RegisterRequest {
 
 export async function registerS(request: RegisterRequest): Promise<RegisterResponse> {
     try {
-        const response: AxiosResponse<RegisterResponse> = await axios.post("https://isuci-back.onrender.com/registro", request);
+        const response: AxiosResponse<RegisterResponse> = await axios.post("https://isucibackv2-4wur.onrender.com/auth/register", request);
 
         if (response.status === 200) {
             return response.data;
