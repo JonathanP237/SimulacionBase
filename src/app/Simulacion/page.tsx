@@ -90,7 +90,7 @@ const Simulacion: React.FC = () => {
                     <tr>
                         <th className="py-2 px-4 border-b border-gray-200 text-black">Posición</th>
                         <th className="py-2 px-4 border-b border-gray-200 text-black">Ciclista</th>
-                        <th className="py-2 px-4 border-b border-gray-200 text-black">Tiempo acumulado (sg)</th>
+                        <th className="py-2 px-4 border-b border-gray-200 text-black">Tiempo acumulado (s)</th>
                     </tr>
                 </thead>
                 <tbody>
