@@ -4,6 +4,7 @@ import { useState } from 'react';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { registerS, RegisterRequest } from '../../services/registerService';
+import { login, LoginRequest } from '../../services/loginService';
 import GoogleTranslate from '../../components/GoogleTranslate';
 
 const RegistrarPagina = () => {
@@ -26,17 +27,61 @@ const RegistrarPagina = () => {
       tipousuario: tipoUsuario,
       fechainiciocarrera: new Date(data.fechainiciocarrera),
     };
+
     if (data.contrasenausuario !== data.confirmPassword) {
       return alert("Las contraseñas no coinciden");
     }
+
     try {
       const response: string = await registerS(registerRequest);
       console.log('Respuesta de registro:', response);
+
+      // Auto login después de registro exitoso
+      const loginRequest: LoginRequest = {
+        usuario: data.iddocumento.toString(),
+        password: data.contrasenausuario,
+        recaptchaToken: '', // Añade el token de reCAPTCHA si es necesario
+      };
+
+      try {
+        const loginResponse: string = await login(loginRequest);
+        console.log('Respuesta de inicio de sesión:', loginResponse);
+
+        // Guardar el tipo de usuario en localStorage para ser usado en sideBar
+        localStorage.setItem('userType', loginResponse);
+        switch (loginResponse) {
+          case 'Director':
+            router.push('/Director/Home');
+            break;
+          case 'Masajista':
+            router.push('/Masajista/Home');
+            break;
+          case 'Ciclista':
+            router.push('/Ciclista/Home');
+            break;
+          case 'Administrador':
+            router.push('/Admin/Home');
+            break;
+          default:
+            alert('Tipo de usuario no reconocido. Por favor, contacta al soporte.');
+            break;
+        }
+      } catch (loginError: any) {
+        if (typeof loginError === 'string') {
+          console.error('Error al iniciar sesión:', loginError);
+          alert('Error al iniciar sesión. Por favor, inténtalo de nuevo.');
+        } else {
+          console.error('Error al iniciar sesión:', loginError.message);
+          alert(`Error al iniciar sesión: ${loginError.message}`);
+        }
+      }
     } catch (error: any) {
       if (typeof error === 'string') {
         console.error('Error al registrar:', error);
+        alert(`Error al registrar: ${error}`);
       } else {
         console.error('Error al registrar:', error.message);
+        alert(`Error al registrar: ${error.message}`);
       }
     }
     console.log(registerRequest);
@@ -111,11 +156,11 @@ const RegistrarPagina = () => {
             <div>
               <label htmlFor="confirmPassword" className="text-blue-600 font-bold mb-1 block text-sm text-left">Confirmar Contraseña</label>
               <input type="password" {...register('confirmPassword', { required: true })} placeholder="Confirmar Contraseña" className="p-2 rounded block mb-1 w-full bg-gray-100 text-black font-bold" />
-              {errors.confirmPassword && <span className="text-red-600 text-xs">Confirmar Contraseña es requerido</span>}
+              {errors.confirmPassword && <span className="text-red-600 text-xs">Confirmación de Contraseña es requerida</span>}
             </div>
 
             <div>
-              <label htmlFor="TipoDocumento" className="text-blue-600 font-bold mb-1 block text-sm text-left">Tipo de Documento</label>
+              <label htmlFor="tipodocumento" className="text-blue-600 font-bold mb-1 block text-sm text-left">Tipo de Documento</label>
               <select className="p-2 rounded block mb-1 w-full bg-gray-100 text-black font-bold" {...register('documentousuario', { required: true })}>
                 <option value="">Selecciona el tipo de documento</option>
                 {tiposDocumento.map((tipo) => (
@@ -126,21 +171,21 @@ const RegistrarPagina = () => {
             </div>
 
             <div>
-              <label htmlFor="Documento" className="text-blue-600 font-bold mb-1 block text-sm text-left">Número de Documento</label>
-              <input type="text" {...register('iddocumento', { required: true })} placeholder="Documento" className="p-2 rounded block mb-1 w-full bg-gray-100 text-black font-bold" />
+              <label htmlFor="documentousuario" className="text-blue-600 font-bold mb-1 block text-sm text-left">Número de Documento</label>
+              <input type="number" {...register('iddocumento', { required: true })} placeholder="Número de Documento" className="p-2 rounded block mb-1 w-full bg-gray-100 text-black font-bold" />
               {errors.iddocumento && <span className="text-red-600 text-xs">Número de Documento es requerido</span>}
             </div>
 
             <div>
               <label htmlFor="FechaNacimiento" className="text-blue-600 font-bold mb-1 block text-sm text-left">Fecha de Nacimiento</label>
-              <input type="date" {...register('fechanacimiento', { required: true })} className="p-2 rounded block mb-1 w-full bg-gray-100 text-black font-bold" />
+              <input type="date" {...register('fechanacimiento', { required: true })} placeholder="Fecha de Nacimiento" className="p-2 rounded block mb-1 w-full bg-gray-100 text-black font-bold" />
               {errors.fechanacimiento && <span className="text-red-600 text-xs">Fecha de Nacimiento es requerida</span>}
             </div>
 
             <div>
               <label htmlFor="Genero" className="text-blue-600 font-bold mb-1 block text-sm text-left">Género</label>
               <select className="p-2 rounded block mb-1 w-full bg-gray-100 text-black font-bold" {...register('generousuario', { required: true })}>
-                <option value="">Selecciona tu género</option>
+                <option value="">Selecciona el género</option>
                 {generos.map((genero) => (
                   <option key={genero.value} value={genero.value}>{genero.label}</option>
                 ))}
@@ -155,19 +200,23 @@ const RegistrarPagina = () => {
             </div>
 
             <div>
-              <label htmlFor="TipoUsuario" className="text-blue-600 font-bold mb-1 block text-sm text-left">Tipo de Usuario</label>
-              <select className="p-2 rounded block mb-1 w-full bg-gray-100 text-black font-bold" {...register('tipousuario', { required: true })} onChange={(e) => setTipoUsuario(e.target.value)}>
+              <label htmlFor="tipousuario" className="text-blue-600 font-bold mb-1 block text-sm text-left">Tipo de Usuario</label>
+              <select
+                value={tipoUsuario}
+                onChange={(e) => setTipoUsuario(e.target.value)}
+                className="p-2 rounded block mb-1 w-full bg-gray-100 text-black font-bold"
+              >
                 <option value="">Selecciona el tipo de usuario</option>
                 {tiposUsuario.map((tipo) => (
                   <option key={tipo.value} value={tipo.value}>{tipo.label}</option>
                 ))}
               </select>
-              {errors.tipousuario && <span className="text-red-600 text-xs">Tipo de Usuario es requerido</span>}
+              {!tipoUsuario && <span className="text-red-600 text-xs">Tipo de Usuario es requerido</span>}
             </div>
 
             <div>
               <label htmlFor="FechaInicioCarrera" className="text-blue-600 font-bold mb-1 block text-sm text-left">Fecha de Inicio de Carrera</label>
-              <input type="date" {...register('fechainiciocarrera', { required: true })} className="p-2 rounded block mb-1 w-full bg-gray-100 text-black font-bold" />
+              <input type="date" {...register('fechainiciocarrera', { required: true })} placeholder="Fecha de Inicio de Carrera" className="p-2 rounded block mb-1 w-full bg-gray-100 text-black font-bold" />
               {errors.fechainiciocarrera && <span className="text-red-600 text-xs">Fecha de Inicio de Carrera es requerida</span>}
             </div>
 
