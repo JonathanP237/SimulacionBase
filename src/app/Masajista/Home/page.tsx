@@ -29,7 +29,7 @@ export default function MasajistaDetalle() {
         // Función asincrónica para obtener datos del masajista desde la API
         const fetchMasajista = async () => {
             try {
-                const response = await axios.get<Masajista>(`https://isuci-back.onrender.com/perfil`);
+                const response = await axios.get<Masajista>(`https://isucibackv2-4wur.onrender.com/profile/perfil`);
                 setMasajista(response.data);
                 setIsLoading(false);
             } catch (error: any) { // Capturar el error de cualquier tipo

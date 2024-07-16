@@ -29,7 +29,7 @@ export default function AdministradorDetalle() {
         // Función asincrónica para obtener datos del administrador desde la API
         const fetchAdministrador = async () => {
             try {
-                const response = await axios.get<Administrador>(`https://isuci-back.onrender.com/perfil`);
+                const response = await axios.get<Administrador>(`https://isucibackv2-4wur.onrender.com/profile/perfil`);
                 setAdministrador(response.data);
                 setIsLoading(false);
             } catch (error: any) { // Capturar el error de cualquier tipo

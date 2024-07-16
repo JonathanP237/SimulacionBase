@@ -36,7 +36,7 @@ export default function CiclistaDetalle() {
     useEffect(() => {
         const fetchCiclista = async () => {
             try {
-                const response = await axios.get<Ciclista>(`https://isucibackv2-4wur.onrender.com/auth/perfil`);
+                const response = await axios.get<Ciclista>(`https://isucibackv2-4wur.onrender.com/profile/perfil`);
                 setCiclista(response.data);
                 setIsLoading(false);
             } catch (error: any) {

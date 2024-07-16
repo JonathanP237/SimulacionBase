@@ -29,7 +29,7 @@ export default function DirectorDetalle() {
         // Función asincrónica para obtener datos del director desde la API
         const fetchDirector = async () => {
             try {
-                const response = await axios.get<Director>(`https://isuci-back.onrender.com/perfil`);
+                const response = await axios.get<Director>(`https://isucibackv2-4wur.onrender.com/profile/perfil`);
                 setDirector(response.data);
                 setIsLoading(false);
             } catch (error: any) { // Capturar el error de cualquier tipo
