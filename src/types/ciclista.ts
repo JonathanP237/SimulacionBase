@@ -9,5 +9,5 @@ export interface Ciclista {
     idpais: string;
     idescuadra: string;
     anosexperiencia: number | null;
-    nombreEspecialidad: string;
+    
 }
