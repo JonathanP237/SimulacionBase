@@ -54,7 +54,7 @@ const Simulacion: React.FC = () => {
 
                         setTimes(prevTimes => ({
                             ...prevTimes,
-                            [cyclist.nombreusuario]: (prevTimes[cyclist.nombreusuario] || 0) + delay
+                            [cyclist.name]: (prevTimes[cyclist.name] || 0) + delay
                         }));
 
                         return newState;

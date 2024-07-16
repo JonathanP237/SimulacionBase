@@ -11,7 +11,7 @@ export interface Track {
 
 export interface Ciclista {
     idtipousuario: string;
-    nombreusuario: string;
+    name: string;
     apellidousuario: string;
     iddocumento: string;
     correousuario: string;
