@@ -35,14 +35,19 @@ const RegistrarPagina = () => {
     try {
       const response: string = await registerS(registerRequest);
       console.log('Respuesta de registro:', response);
-
+      if (response === 'Registro exitoso.') {
+        alert('Usuario registrado exitosamente');
+        router.push('/Login');
+      } else {
+        alert('Error al registrar. Por favor, inténtalo de nuevo.');
+      }
       // Auto login después de registro exitoso
       const loginRequest: LoginRequest = {
         usuario: data.iddocumento.toString(),
         password: data.contrasenausuario,
         recaptchaToken: '', // Añade el token de reCAPTCHA si es necesario
       };
-
+/*
       try {
         const loginResponse: string = await login(loginRequest);
         console.log('Respuesta de inicio de sesión:', loginResponse);
@@ -74,7 +79,7 @@ const RegistrarPagina = () => {
           console.error('Error al iniciar sesión:', loginError.message);
           alert(`Error al iniciar sesión: ${loginError.message}`);
         }
-      }
+      }*/
     } catch (error: any) {
       if (typeof error === 'string') {
         console.error('Error al registrar:', error);
