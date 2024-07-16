@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "../../../ISUCI-master/node_modules/tailwindcss/base.css";
+@import "../../../ISUCI-master/node_modules/tailwindcss/components.css";
+@import "../../../ISUCI-master/node_modules/tailwindcss/utilities.css";
 
 :root {
   --foreground-rgb: 0, 0, 0;
