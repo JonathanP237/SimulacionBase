@@ -2,23 +2,23 @@
   {
     "name": "Team Colombia",
     "cyclists": [
-      { "name": "Carlos Pérez", "position": [51.505, -0.09], "speciality":"Escaladores" },
-      { "name": "Luis Martínez", "position": [51.5, -0.08], "speciality":"Rodadores"},
-      { "name": "Jorge López", "position": [51.49, -0.12], "speciality":"Sprinters o embaladores"},
-      { "name": "Fernando García", "position": [51.505, -0.091], "speciality":"gregarios"},
-      { "name": "Diego Fernández", "position": [51.49, -0.12], "speciality":"clasicómanos"},
-      { "name": "Raúl González", "position": [51.49, -0.1], "speciality":"contrarrelojista"}
+      { "nombreusuario": "Carlos Pérez", "position": [51.505, -0.09], "speciality":"Escaladores" },
+      { "nombreusuario": "Luis Martínez", "position": [51.5, -0.08], "speciality":"Rodadores"},
+      { "nombreusuario": "Jorge López", "position": [51.49, -0.12], "speciality":"Sprinters o embaladores"},
+      { "nombreusuario": "Fernando García", "position": [51.505, -0.091], "speciality":"gregarios"},
+      { "nombreusuario": "Diego Fernández", "position": [51.49, -0.12], "speciality":"clasicómanos"},
+      { "nombreusuario": "Raúl González", "position": [51.49, -0.1], "speciality":"contrarrelojista"}
     ]
   },
   {
     "name": "Movistar Team",
     "cyclists": [
-      { "name": "Miguel Ramírez", "position": [51.506, -0.091], "speciality":"Escaladores" },
-      { "name": "Héctor Vega", "position": [51.5, -0.081], "speciality":"Rodadores" },
-      { "name": "Andrés Morales", "position": [51.49, -0.121], "speciality":"Sprinters o embaladores"},
-      { "name": "Javier Santana", "position": [51.505, -0.091], "speciality":"gregarios"},
-      { "name": "Hugo Alonso", "position": [51.49, -0.121], "speciality":"clasicómanos"},
-      { "name": "Mario Domínguez", "position": [51.49, -0.101], "speciality":"contrarrelojista"}
+      { "nombreusuario": "Miguel Ramírez", "position": [51.506, -0.091], "speciality":"Escaladores" },
+      { "nombreusuario": "Héctor Vega", "position": [51.5, -0.081], "speciality":"Rodadores" },
+      { "nombreusuario": "Andrés Morales", "position": [51.49, -0.121], "speciality":"Sprinters o embaladores"},
+      { "nombreusuario": "Javier Santana", "position": [51.505, -0.091], "speciality":"gregarios"},
+      { "nombreusuario": "Hugo Alonso", "position": [51.49, -0.121], "speciality":"clasicómanos"},
+      { "nombreusuario": "Mario Domínguez", "position": [51.49, -0.101], "speciality":"contrarrelojista"}
     ]
   }
 ]
